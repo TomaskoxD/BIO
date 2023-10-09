@@ -30,7 +30,6 @@ def preprocess_dask(preprocessor, file_handler, bar, file, source_path):
     """
     preprocess(preprocessor, file_handler, bar, file, source_path)
 
-# @dask.delayed
 def preprocess(preprocessor, file_handler, bar, file, source_path):
     """
     Preprocess image.

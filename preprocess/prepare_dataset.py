@@ -7,7 +7,6 @@ import io
 
 @dask.delayed
 class Preprocessor():
-    # @dask.delayed
     def get_binary_mask(self,img):
         """
         Get mask for image.
@@ -36,7 +35,7 @@ class Preprocessor():
         mask = cv2.erode(mask, kernel)
         mask = cv2.dilate(mask, kernel)
         return mask
-    # @dask.delayed    
+
     def get_center_from_edge_of_mask(self,mask):
         """
         Get center for image.
@@ -52,7 +51,7 @@ class Preprocessor():
         x=mask.sum(axis=0)
         center[1]=np.where(x>x.max()*0.95)[0].mean()
         return center
-    # @dask.delayed    
+
     def get_radius_from_mask_center(self,mask,center):
         """
         Get radius for image.
@@ -76,7 +75,7 @@ class Preprocessor():
             print('error in get_radius_from_mask_center\n\n', center, '\n\n', b_count, '\n\n')
             radius = mask.shape[0] - center[0]
         return radius
-    # @dask.delayed    
+
     def get_circle_by_center_bounding_box(self,shape,center,radius):
         """
         Get circle for image.
@@ -91,7 +90,7 @@ class Preprocessor():
         center_tmp=(int(center[0]),int(center[1]))
         center_mask=cv2.circle(center_mask,center_tmp[::-1],int(radius),(1),-1)
         return center_mask
-    # @dask.delayed    
+
     def get_mask(self,img):
         """
         Get mask for image.
@@ -135,7 +134,7 @@ class Preprocessor():
         bbox = (s_h, s_w, min(h-s_h,2 * radius), min(w-s_w,2 * radius))
         tmp_mask=self.get_circle_by_center_bounding_box(shape,center,radius)
         return tmp_mask,bbox,center,radius
-    # @dask.delayed    
+
     def remove_back_area(self,img,bounding_box=None,border=None):
         """
         Remove background area.
@@ -153,7 +152,7 @@ class Preprocessor():
             border=np.array((bounding_box[0],bounding_box[0]+bounding_box[2],bounding_box[1],bounding_box[1]+bounding_box[3],img.shape[0],img.shape[1]),dtype=np.int32)
         image=image[border[0]:border[1],border[2]:border[3],...]
         return image,border
-    # @dask.delayed   
+
     def supplemental_black_area(self,img,border=None):
         """
         Supplement black area to image to make it square.
@@ -185,7 +184,7 @@ class Preprocessor():
     def mask_image(self,img,mask):
         img[mask<=0,...]=0
         return img
-    # @dask.delayed  
+
     def get_image_without_background(self, img, path, height_width=(800, 800)):
         """
         Preprocess images.
@@ -210,7 +209,6 @@ class Preprocessor():
         if cropped_img.ndim == 3 and cropped_img.shape[2] == 3:
             cropped_img = cv2.cvtColor(cropped_img, cv2.COLOR_RGB2BGR)
         cv2.imwrite(path, cropped_img)
-        # print("done.")
         return True
 
 
@@ -267,9 +265,7 @@ class FileHandler():
 
         if image.ndim == 3 and image.shape[2] == 3:
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-        # print(file_path)
         cv2.imwrite(file_path, image)
-        # io.imsave(file_path, image)
         return file_path
     
     def fold_dir(self,folder):
