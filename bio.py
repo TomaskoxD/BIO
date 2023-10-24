@@ -40,7 +40,7 @@ parser.add_argument('--crop_size', type=int, default=224 , help='crop size (defa
 parser.add_argument('--label_idx', type=list, default=['Good', 'Usable', 'Reject'] , help='label index (default: [\'Good\', \'Usable\', \'Reject\'])')
 
 parser.add_argument('--n_classes', type=int, default=3 , help='number of classes (default: 3)')
-# Optimization options
+
 parser.add_argument('--epochs', default=20, type=int , help='number of total epochs to run (default: 20)')
 parser.add_argument('--batch-size', default=4, type=int , help='mini-batch size (default: 4)')
 parser.add_argument('--lr', default=0.01, type=float , help='initial learning rate (default: 0.01)')
@@ -56,8 +56,6 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-
-
 
 cudnn.benchmark = True
 
@@ -76,7 +74,6 @@ model.to(device)
 criterion = torch.nn.BCELoss(reduction='mean')
 optimizer = torch.optim.SGD(model.parameters(), lr=args.lr)
 
-# print if model is going to be trained on GPU or CPU
 print('==========================================')
 print('device: ')
 if torch.cuda.is_available():
