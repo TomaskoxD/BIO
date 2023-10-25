@@ -197,7 +197,7 @@ if "train" in args.mode:
     print('Length of train_loader: ', len(train_loader))
     print('Length of val_loader: ', len(val_loader))
 
-if "test" in args.mode:
+if "test" in args.mode: # DONE
     print("Testing mode selected")
 
     data_test = DatasetGenerator(data_dir=args.test_images_dir, list_file=args.label_test_file, transform1=transform_list_val1, transform2=transformList2, n_class=args.n_classes, set_name='test')
@@ -206,7 +206,6 @@ if "test" in args.mode:
 
     print('Length of test_loader: ', len(test_loader))
 
-    # Testing
     outPRED_mcs = torch.FloatTensor().cuda()
     model.eval()
     iters_per_epoch = len(test_loader)
@@ -226,12 +225,9 @@ if "test" in args.mode:
         bar.next()
     bar.finish()
 
-    # save result into excel:
     saver = Saver(args.label_idx)
     saver.save(args.label_test_file, outPRED_mcs, args.clasified_images_dir)
 
-
-        # ...
 
 if "evaluate" in args.mode: # DONE
     print("Evaluation mode selected")
@@ -245,11 +241,9 @@ if "evaluate" in args.mode: # DONE
     df_tmp = pd.read_csv(args.clasified_images_dir)
     predict_tmp = np.zeros([img_num, 3])
 
-
     for idx in range(3):
         predict_tmp[:, idx] = np.array(df_tmp[args.label_idx[idx]].tolist())
 
-    
     calculator = MetricCalculator(GT_QA_list, predict_tmp, args.label_idx)
     calculator.get_metrics()
     calculator.print_metrics(args.model, args.clasified_images_dir)
