@@ -28,60 +28,14 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-import numpy as np
-from sklearn.metrics import f1_score, confusion_matrix, roc_curve, roc_auc_score, accuracy_score
-
-
-def compute_metric(datanpGT, datanpPRED, target_names):
-
-    n_class = len(target_names)
-    argmaxPRED = np.argmax(datanpPRED, axis=1)
-    F1_metric = np.zeros([n_class, 1])
-    tn = np.zeros([n_class, 1])
-    fp = np.zeros([n_class, 1])
-    fn = np.zeros([n_class, 1])
-    tp = np.zeros([n_class, 1])
-
-    Accuracy_score = accuracy_score(datanpGT, argmaxPRED)
-    ROC_curve = {}
-    mAUC = 0
-
-    for i in range(n_class):
-        tmp_label = datanpGT == i
-        tmp_pred = argmaxPRED == i
-        F1_metric[i] = f1_score(tmp_label, tmp_pred)
-        tn[i], fp[i], fn[i], tp[i] = confusion_matrix(tmp_label, tmp_pred).ravel()
-        outAUROC = roc_auc_score(tmp_label, datanpPRED[:, i])
-
-        mAUC = mAUC + outAUROC
-        [roc_fpr, roc_tpr, roc_thresholds] = roc_curve(tmp_label, datanpPRED[:, i])
-
-        ROC_curve.update({'ROC_fpr_'+str(i): roc_fpr,
-                          'ROC_tpr_' + str(i): roc_tpr,
-                          'ROC_T_' + str(i): roc_thresholds,
-                          'AUC_' + str(i): outAUROC})
-
-    mPrecision = sum(tp) / sum(tp + fp)
-    mRecall = sum(tp) / sum(tp + fn)
-    output = {
-        'class_name': target_names,
-        'F1': F1_metric,
-        'AUC': mAUC / 3,
-        'Accuracy': Accuracy_score,
-
-        'Sensitivity': tp / (tp + fn),
-        'Precision': tp / (tp + fp),
-        'Specificity': tn / (fp + tn),
-        'ROC_curve': ROC_curve,
-        'tp': tp, 'tn': tn, 'fp': fp, 'fn': fn,
-
-        'micro-Precision': mPrecision,
-        'micro-Sensitivity': mRecall,
-        'micro-Specificity': sum(tn) / sum(fp + tn),
-        'micro-F1': 2*mPrecision * mRecall / (mPrecision + mRecall),
-    }
-
-    return output
+def cprint(text, color):
+    if color == "blue":
+        color = 94
+    elif color == "red":
+        color = 91
+    elif color == "green":
+        color = 92
+    print("\033[{}m{}\033[0m".format(color, text))
 
 
 # Arguments 
@@ -123,13 +77,16 @@ cudnn.benchmark = True
 
 if args.model == 'dense121_mcs':
     model = dense121_mcs(n_class=args.n_classes)
-
-if args.pre_model is not None:
-    if not os.path.isfile(args.pre_model):
-        print('Pretrained model not found in \'' + args.pre_model + '\'... \nExiting...')
-        sys.exit(1)
-    loaded_model = torch.load(args.pre_model)
-    model.load_state_dict(loaded_model['state_dict'])
+else:
+    print('Model not found... \nExiting...')
+    sys.exit(1)
+if "train" not in args.mode:
+    if args.pre_model is not None:
+        if not os.path.isfile(args.pre_model):
+            print('Pretrained model not found in \'' + args.pre_model + '\'... \nExiting...')
+            sys.exit(1)
+        loaded_model = torch.load(args.pre_model)
+        model.load_state_dict(loaded_model['state_dict'])
 
 model.to(device)
 
@@ -179,13 +136,33 @@ transform_list_val1 = transforms.Compose([
 print('Total params: %.2fM' % (sum(p.numel() for p in model.parameters()) / 1000000.0))
 
 # check if files exist
+if not os.path.isfile(args.label_train_file):
+    cprint('Label train file not found in \'{}\' ... \nExiting...'.format(args.label_train_file), "red")
+    sys.exit(1)
+
+if not os.path.isfile(args.label_test_file):
+    cprint('Label test file not found in \'{}\' ... \nExiting...'.format(args.label_test_file), "red")
+    sys.exit(1)
+
+if not os.path.isdir(args.train_images_dir):
+    cprint('Train images directory not found in \'{}\' ... \nExiting...'.format(args.train_images_dir), "red")
+    sys.exit(1)
+
+if not os.path.isdir(args.test_images_dir):
+    cprint('Test images directory not found in \'{}\' ... \nExiting...'.format(args.test_images_dir), "red")
+    sys.exit(1)
+
+if not os.path.isdir(args.model_dir):
+    os.makedirs(args.model_dir)
+
+
 
 
 
 
 if "train" in args.mode:
-    print("Training mode selected")
-    # ...
+    print("\033[94m\n\nTraining mode selected\033[0m")
+
     data_train = DatasetGenerator(data_dir=args.train_images_dir, list_file=args.label_train_file, transform1=transform_list1, transform2=transformList2, n_class=args.n_classes, set_name='train')
 
     train_loader = torch.utils.data.DataLoader(dataset=data_train, batch_size=args.batch_size, shuffle=True, num_workers=4, pin_memory=True)
@@ -194,11 +171,44 @@ if "train" in args.mode:
 
     val_loader = torch.utils.data.DataLoader(dataset=data_val, batch_size=args.batch_size, shuffle=False, num_workers=4, pin_memory=True)
 
+
+    print('Length of train_loader: ', len(train_loader))
+    print('Length of val_loader: ', len(val_loader))
+    best_metric = np.inf
+    best_iter = 0   
+    train_loader.dataset.image_names = train_loader.dataset.image_names[:100]
+    train_loader.dataset.labels = train_loader.dataset.labels[:100]
+
+    val_loader.dataset.image_names = val_loader.dataset.image_names[:100]
+    val_loader.dataset.labels = val_loader.dataset.labels[:100]
+
     print('Length of train_loader: ', len(train_loader))
     print('Length of val_loader: ', len(val_loader))
 
+    best_model = model
+    trainer = Trainer(model, optimizer, criterion, args.loss_w, args.epochs)
+    validator = Validator(model, criterion)
+    for epoch in range(0, args.epochs):
+        _ = trainer.train_step(train_loader, epoch)
+        validation_loss = validator.validate(val_loader)
+        print('Current Loss: {}| Best Loss: {} at epoch: {}'.format(validation_loss, best_metric, best_iter))
+
+        # save model
+        if best_metric > validation_loss:
+            best_iter = epoch
+            best_metric = validation_loss
+            best_model = model
+    
+    model = best_model
+    cprint('Saving model with best loss: {} at epoch: {}'.format(best_metric, best_iter), "red")
+    model_save_file = os.path.join(args.model_dir, args.save_model + '.tar')
+    if not os.path.exists(args.model_dir):
+        os.makedirs(args.model_dir)
+    torch.save({'state_dict': model.state_dict(), 'best_loss': best_metric}, model_save_file)
+    cprint('Model saved to {}'.format(model_save_file), "green")
+
 if "test" in args.mode: # DONE
-    print("Testing mode selected")
+    print("\033[94m\n\nTesting mode selected\033[0m")
 
     data_test = DatasetGenerator(data_dir=args.test_images_dir, list_file=args.label_test_file, transform1=transform_list_val1, transform2=transformList2, n_class=args.n_classes, set_name='test')
 
@@ -226,18 +236,19 @@ if "test" in args.mode: # DONE
     bar.finish()
 
     saver = Saver(args.label_idx)
+    cprint('Saving results to: {}'.format(args.clasified_images_dir), "green")
     saver.save(args.label_test_file, outPRED_mcs, args.clasified_images_dir)
 
 
 if "evaluate" in args.mode: # DONE
-    print("Evaluation mode selected")
-
+    cprint("\n\nEvaluating mode selected", "blue")
+    cprint('Reading test labels from: {}'.format(args.label_test_file), "red")
     df_gt = pd.read_csv(args.label_test_file)
     img_list = df_gt["image"].tolist()
     GT_QA_list = np.array(df_gt["quality"].tolist())
     img_num = len(img_list)
 
-    print(args.clasified_images_dir)
+    cprint('Reading results from: {}'.format(args.clasified_images_dir), "red")
     df_tmp = pd.read_csv(args.clasified_images_dir)
     predict_tmp = np.zeros([img_num, 3])
 

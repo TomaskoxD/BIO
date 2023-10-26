@@ -18,7 +18,6 @@ class Trainer:
         self.model.train()
         epoch_loss = 0.0
         iters_per_epoch = len(train_loader)
-        print('\n\niters_per_epoch: ', iters_per_epoch, '\n\n')
         bar = Bar('Processing {} Epoch -> {} / {}'.format('train', epoch+1, self.epochs), max=iters_per_epoch)
         bar.check_tty = False
 

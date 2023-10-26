@@ -47,8 +47,12 @@ class MetricCalculator:
 
             metrics['AUC'] += outAUROC
             metrics['Sensitivity'].append(tp / (tp + fn))
-            metrics['Precision'].append(tp / (tp + fp))
             metrics['Specificity'].append(tn / (fp + tn))
+            if tp + fp == 0:
+                precision = 0
+            else:
+                precision = tp / (tp + fp)
+            metrics['Precision'].append(precision)
 
         mPrecision = sum(metrics['tp']) / sum(metrics['tp'] + metrics['fp'])
         mRecall = sum(metrics['tp']) / sum(metrics['tp'] + metrics['fn'])
