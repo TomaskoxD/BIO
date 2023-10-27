@@ -6,14 +6,12 @@ from PIL import Image, ImageTk
 import os
 import glob
 
-##############################################ZMENIT CESTU K SUBOROM##############################################
-list_file = 'data/train_mine.csv'
-path = 'images/train/'
-##############################################ZMENIT CESTU K SUBOROM##############################################
+# Modify the file path and directory path as needed
+list_file = 'data/test_mine.csv'
+path = 'images/test/'
 
 current_index = 0
 ratings = []
-
 
 def close_application(event):
     print("Closing application")
@@ -30,15 +28,16 @@ def rate_image(rating):
         show_next_image()
         df.to_csv(list_file, index=False)
         log_text.insert('1.0', f"Saved ratings to test.csv\n")
+        update_status_label()
     else:
         close_application(None)
 
 def show_next_image():
     img_path = df['image'][current_index]
     img_path = img_path.replace('.jpeg', '.png')
-    img = cv2.imread(path + img_path)
+    img = cv2.imread(os.path.join(path, img_path))
 
-    img = cv2.resize(img, (900, 900))  # Adjust the image size
+    img = cv2.resize(img, (900, 900))
     img = Image.fromarray(img)
     img = ImageTk.PhotoImage(img)
     label.configure(image=img)
@@ -46,28 +45,30 @@ def show_next_image():
     label2.configure(text=df['quality'][current_index])
     label3.configure(text=img_path)
     log_text.insert('1.0', f"Showing image {current_index + 1}\n")
+    update_status_label()
 
 def go_back():
     global current_index
     if current_index > 0:
         current_index -= 1
-        show_next_image()  # Show the previous image
+        show_next_image()
         log_text.insert('1.0', f"Going back to image {current_index + 1}\n")
+        update_status_label()
+
+def update_status_label():
+    status_label.configure(text=f"Image {current_index + 1}/{len(df)}")
 
 if not os.path.isfile(list_file):
-
-    files = glob.glob(path + '*')
-    image_names = [file.split('/')[-1] for file in files]
-    # change from .png to .jpeg
+    files = glob.glob(os.path.join(path, '*'))
+    image_names = [os.path.basename(file) for file in files]
     image_names = [file.split('.')[0] + '.jpeg' for file in image_names]
     df = pd.DataFrame(columns=['', 'image', 'quality', 'DR_grade'])
     df['image'] = image_names
     df['quality'] = 0
     df['DR_grade'] = 0
-    df[''] =  df.index
+    df[''] = df.index
     df.to_csv(list_file, index=False)
 else:
-    
     df = pd.read_csv(list_file)
 
 root = tk.Tk()
@@ -84,7 +85,9 @@ label2.pack()
 label3 = tk.Label(root)
 label3.pack()
 
-# Buttons for rating image quality
+status_label = tk.Label(root, text="Image 1/1")  # Initialize with "Image 1/1"
+status_label.pack()
+
 btn_0 = tk.Button(root, text="Rate 0 - Reject", command=lambda: rate_image(0))
 btn_0.pack()
 
@@ -94,23 +97,19 @@ btn_1.pack()
 btn_2 = tk.Button(root, text="Rate 2 - Good", command=lambda: rate_image(2))
 btn_2.pack()
 
-# Back button to go to the previous image
 back_btn = tk.Button(root, text="Back", command=go_back)
 back_btn.pack()
 
-# Text widget for logging
 log_text = Text(root, height=20, width=50)
 log_text.pack()
 
-# Initialize the log_text widget first
 show_next_image()
 
 root.bind('<Escape>', close_application)
 root.mainloop()
 
-# Display ratings at the end (you can save them to a file or use them as needed)
 log_text.insert('1.0', "Image Ratings:\n")
 for rating in ratings:
     log_text.insert('1.0', f"Image: {rating['image']}, Rating: {rating['rating']}\n")
 
-log_text.config(state=tk.DISABLED)  # Disable text editing in the log widget
+log_text.config(state=tk.DISABLED)
