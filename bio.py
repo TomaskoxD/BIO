@@ -20,6 +20,7 @@ from libs.trainer import Trainer, Validator
 from libs.metric import MetricCalculator
 from libs.saver import Saver
 from networks.densenet_mcf import dense121_mcs
+from networks.resnet_mcf import resnet50_mcs
 
 np.random.seed(0)
 
@@ -47,10 +48,10 @@ parser.add_argument('--pre_model', type=str, default='model' , help='pretrained 
 parser.add_argument('--save_model', type=str, default='model' , help='save model name (default: model)')
 parser.add_argument('--crop_size', type=int, default=224 , help='crop size (default: 224)')
 parser.add_argument('--label_idx', type=list, default=['Good', 'Usable', 'Reject'] , help='label index (default: [\'Good\', \'Usable\', \'Reject\'])')
-parser.add_argument('--test_images_dir', type=str, default='preprocess/train_preprocessed' , help='test image directory (default: preprocess/train_preprocessed)') # TODO: change to test_preprocessed
-parser.add_argument('--train_images_dir', type=str, default='preprocess/train_preprocessed' , help='train image directory (default: preprocess/train_preprocessed)')
-parser.add_argument('--label_train_file', type=str, default='data/Label_EyeQ_train.csv' , help='label train file (default: data/Label_EyeQ_train.csv)')
-parser.add_argument('--label_test_file', type=str, default='data/Label_EyeQ_train.csv' , help='label test file (default: data/Label_EyeQ_test.csv)') # TODO: change to test
+parser.add_argument('--test_images_dir', type=str, default='images/test' , help='test image directory (default: preprocess/train_preprocessed)') # TODO: change to test_preprocessed
+parser.add_argument('--train_images_dir', type=str, default='images/train' , help='train image directory (default: preprocess/train_preprocessed)')
+parser.add_argument('--label_train_file', type=str, default='data/train_labels.csv' , help='label train file (default: data/Label_EyeQ_train.csv)')
+parser.add_argument('--label_test_file', type=str, default='data/test_labels.csv' , help='label test file (default: data/Label_EyeQ_test.csv)') # TODO: change to test
 
 parser.add_argument('--clasified_images_dir', type=str, default='data/DenseNet121_v3_v1_mine.csv' , help='clasified images directory (default: data/DenseNet121_v3_v1_mine.csv)')
 
@@ -77,6 +78,9 @@ cudnn.benchmark = True
 
 if args.model == 'dense121_mcs':
     model = dense121_mcs(n_class=args.n_classes)
+elif args.model == 'resnet50_mcs':
+    model = resnet50_mcs(n_class=args.n_classes)
+
 else:
     print('Model not found... \nExiting...')
     sys.exit(1)
