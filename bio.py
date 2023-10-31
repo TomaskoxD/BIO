@@ -20,7 +20,7 @@ from libs.trainer import Trainer, Validator
 from libs.metric import MetricCalculator
 from libs.saver import Saver
 from networks.densenet_mcf import dense121_mcs
-from networks.resnet_mcf import resnet50_mcs
+from networks.resnet_mcf import resnet50_mcs, resnet18_mcs
 
 np.random.seed(0)
 
@@ -80,6 +80,8 @@ if args.model == 'dense121_mcs':
     model = dense121_mcs(n_class=args.n_classes)
 elif args.model == 'resnet50_mcs':
     model = resnet50_mcs(n_class=args.n_classes)
+elif args.model == 'resnet18_mcs':
+    model = resnet18_mcs(n_class=args.n_classes)
 
 else:
     print('Model not found... \nExiting...')
@@ -171,7 +173,7 @@ if "train" in args.mode:
 
     train_loader = torch.utils.data.DataLoader(dataset=data_train, batch_size=args.batch_size, shuffle=True, num_workers=4, pin_memory=True)
 
-    data_val = DatasetGenerator(data_dir=args.train_images_dir, list_file=args.label_test_file, transform1=transform_list_val1, transform2=transformList2, n_class=args.n_classes, set_name='val')
+    data_val = DatasetGenerator(data_dir=args.train_images_dir, list_file=args.label_train_file, transform1=transform_list_val1, transform2=transformList2, n_class=args.n_classes, set_name='val')
 
     val_loader = torch.utils.data.DataLoader(dataset=data_val, batch_size=args.batch_size, shuffle=False, num_workers=4, pin_memory=True)
 
