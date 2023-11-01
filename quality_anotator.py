@@ -73,6 +73,7 @@ else:
 
 root = tk.Tk()
 root.title("Image Quality Rating Tool")
+#root.state('zoomed') a vymazat root.attributes
 root.attributes('-fullscreen', True)
 root.configure(background='black')
 
