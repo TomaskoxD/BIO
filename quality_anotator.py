@@ -9,6 +9,10 @@ import glob
 # Modify the file path and directory path as needed
 list_file = 'data/test_mine.csv'
 path = 'images/test/'
+# resolution = (1900, 1060) # 1080p
+resolution = (2540, 1420) # 2K
+# resolution = (3820, 2140) # 4K
+
 
 current_index = 0
 ratings = []
@@ -73,8 +77,7 @@ else:
 
 root = tk.Tk()
 root.title("Image Quality Rating Tool")
-#root.state('zoomed') a vymazat root.attributes
-root.attributes('-fullscreen', True)
+root.geometry(f"{resolution[0]}x{resolution[1]}+0+0")
 root.configure(background='black')
 
 label = tk.Label(root)
