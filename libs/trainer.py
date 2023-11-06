@@ -7,6 +7,21 @@ import numpy as np
 import pandas as pd
 
 class Trainer:
+    """
+    Trainer
+
+    Class to train the model. It trains the model and saves the best model based on the validation loss. It trains model on 3 sets of images, all from the same eye but in different color channels. It uses the Trainer class from PyTorch to train the model.
+
+    Args:
+        model: Model to train.
+        optimizer: Optimizer for training.
+        criterion: Loss function.
+        loss_weights: Weights for loss function.
+        epochs: Number of epochs.
+    
+    Returns:
+        None.
+    """
     def __init__(self, model, optimizer, criterion, loss_weights, epochs):
         self.model = model
         self.optimizer = optimizer
@@ -68,6 +83,18 @@ class Trainer:
         bar.finish()
         return epoch_loss
 class Validator:
+    """
+    Validator
+
+    Class to validate the model. It validates the model and saves the best model based on the validation loss. It validates model on 3 sets of images, all from the same eye but in different color channels. It uses the Validator class from PyTorch to validate the model.
+
+    Args:
+        model: Model to validate.
+        criterion: Loss function.
+
+    Returns:
+        None.
+    """
     def __init__(self, model, criterion):
         self.model = model
         self.criterion = criterion
@@ -105,6 +132,20 @@ class Validator:
         return epoch_loss
 
 def save_output(label_test_file, dataPRED, args, save_file):
+    """
+    Save output.
+
+    Function to save the output of the model. It saves the output of the model in a csv file.
+
+    Args:
+        label_test_file: Label file for test data.
+        dataPRED: Predicted data.
+        args: Arguments.
+        save_file: File to save the output.
+
+    Returns:
+        None.
+    """
     label_list = args.label_idx
     n_class = len(label_list)
     datanpPRED = np.squeeze(dataPRED.cpu().numpy())

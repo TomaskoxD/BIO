@@ -7,6 +7,23 @@ from sklearn import preprocessing
 import pandas as pd
 
 class DatasetGenerator(Dataset):
+    """
+    Dataset generator
+
+    Class to generate dataset for training, testing and validation. It uses the Dataset class from PyTorch to load the data, transform it and return it in batches.
+
+    Args:
+        data_dir: Directory of the data.
+        list_file: List file.
+        transform1: Transformations for image.
+        transform2: Transformations for image.
+        n_class: Number of classes.
+        set_name: Name of the dataset.
+
+    Returns:
+        Image and label. 
+    
+    """
     def __init__(self, data_dir, list_file, transform1=None, transform2=None, n_class=3, set_name='train_preprocessed'):
 
         self.data_dir = data_dir

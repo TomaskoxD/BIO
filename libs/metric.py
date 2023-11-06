@@ -2,6 +2,19 @@ import numpy as np
 from sklearn.metrics import f1_score, confusion_matrix, roc_curve, roc_auc_score, accuracy_score
 
 class MetricCalculator:
+    """
+    MetricCalculator
+
+    Class to calculate the metrics of the model. It calculates the metrics of the model and saves them in a dictionary.
+
+    Args:
+        df: Dataframe with the labels.
+        predictions: Predictions of the model.
+        target_names: List of labels.
+
+    Returns:
+        None.
+    """
     def __init__(self, df, predictions, target_names):
         self.df = df
         self.predictions = predictions
