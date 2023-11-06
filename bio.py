@@ -15,7 +15,7 @@ import torch.backends.cudnn as cudnn
 import torchvision.transforms as transforms
 from common.progress.bar import Bar
 
-from libs.EyeQ_loader import DatasetGenerator
+from libs.loader import DatasetGenerator
 from libs.trainer import Trainer, Validator
 from libs.metric import MetricCalculator
 from libs.saver import Saver
@@ -167,7 +167,7 @@ if not os.path.isdir(args.model_dir):
 
 
 if "train" in args.mode:
-    print("\033[94m\n\nTraining mode selected\033[0m")
+    cprint("\n\nTraining mode selected", "blue")
 
     data_train = DatasetGenerator(data_dir=args.train_images_dir, list_file=args.label_train_file, transform1=transform_list1, transform2=transformList2, n_class=args.n_classes, set_name='train')
 
@@ -214,7 +214,7 @@ if "train" in args.mode:
     cprint('Model saved to {}'.format(model_save_file), "green")
 
 if "test" in args.mode: # DONE
-    print("\033[94m\n\nTesting mode selected\033[0m")
+    cprint("\n\nTesting mode selected", "blue")
 
     data_test = DatasetGenerator(data_dir=args.test_images_dir, list_file=args.label_test_file, transform1=transform_list_val1, transform2=transformList2, n_class=args.n_classes, set_name='test')
 
