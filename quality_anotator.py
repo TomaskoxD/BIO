@@ -6,6 +6,9 @@ from PIL import Image, ImageTk
 import os
 import glob
 
+
+###################################################################################
+
 # Modify the file path and directory path as needed
 list_file = 'data/test_mine.csv'
 path = 'images/test/'
@@ -13,12 +16,16 @@ path = 'images/test/'
 resolution = (2540, 1420) # 2K
 # resolution = (3820, 2140) # 4K
 
+scale = resolution[0] // 2.8
+
+###################################################################################
+
 
 current_index = 0
 ratings = []
 
 def close_application(event):
-    print("Closing application")
+    print("Closing application on", event)
     root.quit()
 
 def rate_image(rating):
@@ -41,7 +48,7 @@ def show_next_image():
     img_path = img_path.replace('.jpeg', '.png')
     img = cv2.imread(os.path.join(path, img_path))
 
-    img = cv2.resize(img, (900, 900))
+    img = cv2.resize(img, (int(scale), int(scale)))
     img = Image.fromarray(img)
     img = ImageTk.PhotoImage(img)
     label.configure(image=img)
@@ -104,7 +111,7 @@ btn_2.pack()
 back_btn = tk.Button(root, text="Back", command=go_back)
 back_btn.pack()
 
-log_text = Text(root, height=20, width=50)
+log_text = Text(root, height=int(resolution[0] // 128), width=int(resolution[0] // 40))
 log_text.pack()
 
 show_next_image()
