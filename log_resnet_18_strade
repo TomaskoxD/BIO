@@ -1,0 +1,154 @@
+==========================================
+device:
+GPU - NVIDIA GeForce RTX 4070
+==========================================
+model:
+resnet18_mcs
+==========================================
+criterion:
+BCELoss()
+==========================================
+optimizer:
+SGD (
+Parameter Group 0
+    dampening: 0
+    differentiable: False
+    foreach: None
+    lr: 0.01
+    maximize: False
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)
+==========================================
+Total params: 33.54M
+
+
+Training mode selected
+Length of train_loader:  183
+Length of val_loader:  183
+Processing train Epoch -> 1 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6757
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.6431187212141485| Best Loss: inf at epoch: 0
+Processing train Epoch -> 2 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.8126
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.6192243450977764| Best Loss: 0.6431187212141485 at epoch: 0
+Processing train Epoch -> 3 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6058
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.605353240432635| Best Loss: 0.6192243450977764 at epoch: 1
+Processing train Epoch -> 4 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.4953
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5948537949655877| Best Loss: 0.605353240432635 at epoch: 2
+Processing train Epoch -> 5 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6066
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5839727858050925| Best Loss: 0.5948537949655877 at epoch: 3
+Processing train Epoch -> 6 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6352
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5745750372527075| Best Loss: 0.5839727858050925 at epoch: 4
+Processing train Epoch -> 7 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.5764
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5649156855429457| Best Loss: 0.5745750372527075 at epoch: 5
+Processing train Epoch -> 8 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.5975
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5614872723003554| Best Loss: 0.5649156855429457 at epoch: 6
+Processing train Epoch -> 9 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.5973
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5522624060430162| Best Loss: 0.5614872723003554 at epoch: 7
+Processing train Epoch -> 10 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.7422
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5490054188530302| Best Loss: 0.5522624060430162 at epoch: 8
+Processing train Epoch -> 11 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.9129
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5421081006201238| Best Loss: 0.5490054188530302 at epoch: 9
+Processing train Epoch -> 12 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6130
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.534145228035463| Best Loss: 0.5421081006201238 at epoch: 10
+Processing train Epoch -> 13 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.7599
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5306241114934286| Best Loss: 0.534145228035463 at epoch: 11
+Processing train Epoch -> 14 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.7181
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5282263794883353| Best Loss: 0.5306241114934286 at epoch: 12
+Processing train Epoch -> 15 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6856
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5164344867721933| Best Loss: 0.5282263794883353 at epoch: 13
+Processing train Epoch -> 16 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6034
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5130938845254033| Best Loss: 0.5164344867721933 at epoch: 14
+Processing train Epoch -> 17 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.3387
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5130073317413122| Best Loss: 0.5130938845254033 at epoch: 15
+Processing train Epoch -> 18 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.4676
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5104061686764649| Best Loss: 0.5130073317413122 at epoch: 16
+Processing train Epoch -> 19 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.4869
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.502961290501506| Best Loss: 0.5104061686764649 at epoch: 17
+Processing train Epoch -> 20 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.5260
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.510557957441429| Best Loss: 0.502961290501506 at epoch: 18
+Processing train Epoch -> 21 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.5022
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.5001186914131289| Best Loss: 0.502961290501506 at epoch: 18
+Processing train Epoch -> 22 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.4130
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.49823769861883155| Best Loss: 0.5001186914131289 at epoch: 20
+Processing train Epoch -> 23 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.4444
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.4926180571643381| Best Loss: 0.49823769861883155 at epoch: 21
+Processing train Epoch -> 24 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.3278
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.4902123251085073| Best Loss: 0.4926180571643381 at epoch: 22
+Processing train Epoch -> 25 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6288
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.4872182921145132| Best Loss: 0.4902123251085073 at epoch: 23
+Processing train Epoch -> 26 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6194
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.48060877262894575| Best Loss: 0.4872182921145132 at epoch: 24
+Processing train Epoch -> 27 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6450
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.48359132285326556| Best Loss: 0.48060877262894575 at epoch: 25
+Processing train Epoch -> 28 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6087
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.48341220739434976| Best Loss: 0.48060877262894575 at epoch: 25
+Processing train Epoch -> 29 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.6711
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.485125465145528| Best Loss: 0.48060877262894575 at epoch: 25
+Processing train Epoch -> 30 / 30 |################################| 183 / 183 | Time: 0.0 mins | Loss: 0.3293
+Processing validation |################################| 183 / 183 | Time: 0.00 mins
+Current Loss: 0.4726504637895386| Best Loss: 0.48060877262894575 at epoch: 25
+Saving model with best loss: 0.4726504637895386 at epoch: 29
+Model saved to ./result/strade_resnet_18.tar
+
+
+Testing mode selected
+Length of test_loader:  115
+Processing inference |################################| 115 / 115 | Time: 0.0 min.
+Saving results to: data/strade_resnet_18.csv
+
+
+Evaluating mode selected
+Reading test labels from: data/strade_test_labels.csv
+Reading results from: data/strade_resnet_18.csv
+
+Values classificated by model: resnet18_mcs saved in data/strade_resnet_18.csv have following metrics:
+
+Accuracy: 0.6332
+F1: 0.4688
+AUC: 0.8267
+Sensitivity: 0.5237
+Precision: 0.4254
+Specificity: 0.7971
+micro-Precision: 0.6332
+micro-Sensitivity: 0.6332
+micro-Specificity: 0.8166
+micro-F1: 0.6332
+tp: 96.6667
+tn: 249.3333
+fp: 56.0000
+fn: 56.0000
+
+________________________________________________________
+Executed in  274.71 secs    fish           external
+   usr time  727.98 secs  288.00 micros  727.98 secs
+   sys time   80.09 secs    0.00 micros   80.09 secs
