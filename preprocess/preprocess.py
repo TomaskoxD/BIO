@@ -81,7 +81,7 @@ for r, d, f in os.walk(args.save_path):
 
 for i in range(1, len(file.namelist())):
     img = file_handler.image_open(file, i)
-    path = os.path.join('./train_preprocessed', file.namelist()[i].split('/')[-1]).replace('jpeg', 'png')
+    path = os.path.join(args.save_path, file.namelist()[i].split('/')[-1]).replace('jpeg', 'png')
     if path not in files:
         delayed_tasks.append(preprocessor.get_image_without_background(img, path))
     bar.next()
