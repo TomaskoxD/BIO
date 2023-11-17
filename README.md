@@ -1,9 +1,9 @@
-#BIOMETRICKÉ SYSTÉMY#
-##Klasifikátor hodnocení kvality obrazu sítnice##
-###Tomáš Ondrušek, Peter Ďurica###
-####FIT VUT v Brne, 2023####
+# BIOMETRICKÉ SYSTÉMY
+## Klasifikátor hodnocení kvality obrazu sítnice
+### Tomáš Ondrušek, Peter Ďurica
+#### FIT VUT v Brne, 2023
 
-##Úvod##
+## Úvod
 
 Tento projekt je zameraný na klasifikáciu kvality obrazu sítnice. Vstupom sú snímky sietnice, ktoré sú získané pomocou fundus kamery. V tomto projekte sú použité dve sady snímkov. Jedna je z datasetu *EyePACS*, dostupný na stránke [Kaggle](https://www.kaggle.com/c/diabetic-retinopathy-detection/data). Druhá je z datasetu *STRaDe*. Snímky v datasetoch sú klasifikované do 3 tried podľa stupňa kvality obrazu. Tieto triedy sú: 
 -    *Good*
@@ -11,11 +11,11 @@ Tento projekt je zameraný na klasifikáciu kvality obrazu sítnice. Vstupom sú
   -  *Reject*
 Ohodnotenia týchto datasetov sú v priečinku *data* v súboroch *\*_labels.csv*.
 
-##Popis riešenia##
+## Popis riešenia
 
 Riešenie je rozdelené na 2 časti. Prvá časť je zameraná na predspracovanie dát. Druhá časť je zameraná na samotnú klasifikáciu.
 
-###Predspracovanie dát###
+### Predspracovanie dát
 
 Predspracovanie dát je implementované v priečinku *preprocess/*. Princíp predspracovania je nasledovný:
 
@@ -29,7 +29,7 @@ Predspracovanie dát je implementované v priečinku *preprocess/*. Princíp pre
 
 Pre zlepšenie rýchlosti spracovania je predspracovanie implementované paralelne pomocou knižnice *dask*. Výsledky predspracovania sú uložené v priečinku *images/*.
 
-###Klasifikácia###
+### Klasifikácia
 
 Na klasifikáciu sú použité 3 modely, a to *ResNet18*, *ResNet50* a *DenseNet121*. Tieto modely sú implementované v knižnici *PyTorch*. Tieto modely sú inštancované 3 krát, a to pre každú farebnú spektrálnu zložku snímky, a to RGB, HSV a LAB. Tieto modely sú následne spojené do jedného modelu, ktorý je použitý na klasifikáciu, ako je naznačené v článku [Evaluation of Retinal Image Quality Assessment Networks in Different Color-spaces](https://link.springer.com/chapter/10.1007/978-3-030-32239-7_6).
 
@@ -44,9 +44,9 @@ Princíp klasifikácie je nasledovný:
 7. Testovanie modelu na testovacích dátach
 8. Výpis presnosti modelu
 
-##Spustenie##
+## Spustenie
 
-###Predspracovanie dát###
+### Predspracovanie dát
 
 Predspracovanie dát je možné spustiť pomocou príkazu:
 
@@ -54,7 +54,7 @@ Predspracovanie dát je možné spustiť pomocou príkazu:
 
 Kde *--save_path* je cesta, kde sa majú uložiť predspracované snímky a *--path* je cesta k zip súboru so snímkami.
 
-###Klasifikácia###
+### Klasifikácia
 
 Klasifikáciu je možné spustiť pomocou príkazu:
 
@@ -63,7 +63,7 @@ Klasifikáciu je možné spustiť pomocou príkazu:
 Kde *--mode* je mód, v ktorom sa má program spustiť. Mód *train* spustí trénovanie modelu, mód *test* spustí testovanie modelu a mód *evaluate* spustí vyhodnotenie modelu. *--save_model* je cesta, kde sa má uložiť model. *--clasified_images_dir* je cesta k súboru, kde sa majú uložiť výsledky klasifikácie jednotivých snímkov. *--model* je model, ktorý sa má použiť. *--epochs* je počet epochov, ktoré sa majú použiť pri trénovaní modelu. *--test_images_dir* je cesta k testovacím snímkam. *--train_images_dir* je cesta k trénovacím snímkam. *--label_train_file* je cesta k súboru s označením trénovacích snímkov. *--label_test_file* je cesta k súboru s označením testovacích snímkov.
 
 
-##Vyhodnotenie##
+## Vyhodnotenie
 
 Trénovanie modelov bolo spustené na počítači s procesorom AMD Ryzen 7 7700x a grafickou kartou NVIDIA GeForce RTX 4070. Trénovanie modelov je ukázané v priečinku *logs/*. V skratke sú výsledky nasledovné:
 
@@ -78,7 +78,7 @@ Trénovanie modelov bolo spustené na počítači s procesorom AMD Ryzen 7 7700x
 | DenseNet121 | 0.63 | 28 minút | STRaDe | 30 |
 
 
-##Záver##
+## Záver
 
 Tento projekt sa venoval klasifikácii kvality obrazu sietnice prostredníctvom použitia neurónových sietí a pokročilých techník spracovania obrazu. Experimentovali sme s modelmi ResNet18, ResNet50 a DenseNet121 na dvoch rozdielnych datasetoch - EyePACS a STRaDe.
 
@@ -86,4 +86,6 @@ Vyhodnotenie modelov ukázalo, že na datasete EyePACS dosiahli modely pomerne d
 
 V budúcnosti je možné vylepšiť výkon modelov napríklad prostredníctvom optimalizácie architektúry sietí, zvýšenia trénovacieho datasetu alebo ďalšieho ladenia parametrov trénovania. Dôležité je tiež zdôrazniť aplikácie tohto projektu v medicínskom výskume, kde automatizované hodnotenie obrazu sietnice môže mať významný vplyv na diagnostiku očných ochorení a vývoj nových biometrických systémov.
 
-##Použité knižnice##
+## Použité knižnice
+
+Zoznam použitých knižníc je v súbore *requirements.txt*.
