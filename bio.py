@@ -182,15 +182,6 @@ if "train" in args.mode:
     print('Length of val_loader: ', len(val_loader))
     best_metric = np.inf
     best_iter = 0   
-    # train_loader.dataset.image_names = train_loader.dataset.image_names[:100]
-    # train_loader.dataset.labels = train_loader.dataset.labels[:100]
-
-    # val_loader.dataset.image_names = val_loader.dataset.image_names[:100]
-    # val_loader.dataset.labels = val_loader.dataset.labels[:100]
-
-    # print('Length of train_loader: ', len(train_loader))
-    # print('Length of val_loader: ', len(val_loader))
-
     best_model = model
     trainer = Trainer(model, optimizer, criterion, args.loss_w, args.epochs)
     validator = Validator(model, criterion)
