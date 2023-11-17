@@ -9,6 +9,7 @@ Tento projekt je zameraný na klasifikáciu kvality obrazu sítnice. Vstupom sú
 -    *Good*
  -   *Usable*
   -  *Reject*
+  
 Ohodnotenia týchto datasetov sú v priečinku *data* v súboroch *\*_labels.csv*.
 
 ## Popis riešenia
