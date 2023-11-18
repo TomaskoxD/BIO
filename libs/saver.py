@@ -1,3 +1,14 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Saving the results of the model.        #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import pandas as pd
 import numpy as np
 

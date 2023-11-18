@@ -1,3 +1,15 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Split CSV data into training and        #
+#    testing sets.                           #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import argparse
 import pandas as pd
 import numpy as np

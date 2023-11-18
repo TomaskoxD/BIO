@@ -1,3 +1,14 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Main file of the project.               #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import os
 import argparse
 import time

@@ -1,3 +1,15 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Neural network models for the           #
+#    ResNet18 and ResNet50 architectures.    #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import torch.nn as nn
 import torchvision
 import torch

@@ -1,3 +1,14 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Preprocess retina images.               #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import argparse
 import glob
 import os

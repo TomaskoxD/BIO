@@ -1,3 +1,14 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Metric calculator.                      #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import numpy as np
 from sklearn.metrics import f1_score, confusion_matrix, roc_curve, roc_auc_score, accuracy_score
 

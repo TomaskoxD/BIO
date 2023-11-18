@@ -1,3 +1,14 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Load dataset.                           #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import numpy as np
 import torch
 from torch.utils.data import Dataset

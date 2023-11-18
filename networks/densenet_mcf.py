@@ -1,4 +1,15 @@
-# encoding: utf-8
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Neural network models for the           #
+#    Densenet121 architecture.               #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import torch.nn as nn
 import torchvision
 import torch
