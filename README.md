@@ -57,13 +57,13 @@ Kde *--save_path* je cesta, kde sa majú uložiť predspracované snímky a *--p
 
 ### Klasifikácia
 
-Klasifikáciu je možné spustiť pomocou príkazu:
-
-```python bio.py --mode train test evaluate --save_model ___ --clasified_images_dir data/______.csv --model ___mcs --epochs n --test_images_dir images/___ --train_images_dir images/___ --label_train_file labels/train_labels.csv --label_test_file labels/test_labels.csv```
-
 Ako nápoveda pre spustenie je možné použiť príkaz:
 
 ```python bio.py --help```
+
+Klasifikáciu je možné spustiť pomocou príkazu:
+
+```python bio.py --mode train test evaluate --save_model ___ --clasified_images_dir data/______.csv --model ___mcs --epochs n --test_images_dir images/___ --train_images_dir images/___ --label_train_file labels/train_labels.csv --label_test_file labels/test_labels.csv```
 
 Kde *--mode* je mód, v ktorom sa má program spustiť. Mód *train* spustí trénovanie modelu, mód *test* spustí testovanie modelu a mód *evaluate* spustí vyhodnotenie modelu. *--save_model* je cesta, kde sa má uložiť model. *--clasified_images_dir* je cesta k súboru, kde sa majú uložiť výsledky klasifikácie jednotivých snímkov. *--model* je model, ktorý sa má použiť. *--epochs* je počet epochov, ktoré sa majú použiť pri trénovaní modelu. *--test_images_dir* je cesta k testovacím snímkam. *--train_images_dir* je cesta k trénovacím snímkam. *--label_train_file* je cesta k súboru s označením trénovacích snímkov. *--label_test_file* je cesta k súboru s označením testovacích snímkov.
 
