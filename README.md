@@ -85,7 +85,9 @@ Tento projekt sa venoval klasifikácii kvality obrazu sietnice prostredníctvom 
 
 Vyhodnotenie modelov ukázalo, že na datasete EyePACS dosiahli modely pomerne dobré výsledky, s presnosťou pohybujúcou sa od 0.67 do 0.82. Naopak, na datasete STRaDe sme zaznamenali nižšiu presnosť, pričom sa pohybovala od 0.62 do 0.63. Tieto výsledky sa dajú argumentovať nízkym počtom fotiek v datasete STRaDe na trénovanie a testovanie modelov, konkrétne 1188 fotiek na trénovanie a testovanie, pričom dataset bol rozdelený na 730 fotiek na trénovanie a 458 fotiek na testovanie. Naopak, dataset EyePACS obsahoval 12544 fotiek na trénovanie a 16250 fotiek na testovanie.
 
-V budúcnosti je možné vylepšiť výkon modelov napríklad prostredníctvom optimalizácie architektúry sietí, zvýšenia trénovacieho datasetu alebo ďalšieho ladenia parametrov trénovania. Dôležité je tiež zdôrazniť aplikácie tohto projektu v medicínskom výskume, kde automatizované hodnotenie obrazu sietnice môže mať významný vplyv na diagnostiku očných ochorení a vývoj nových biometrických systémov.
+V budúcnosti je možné vylepšiť výkon modelov napríklad prostredníctvom optimalizácie architektúry sietí, zvýšenia trénovacieho datasetu alebo ďalšieho ladenia parametrov trénovania. Ďalším možným vylepšením je použitie ďalších modelov, napríklad modelov z rodiny EfficientNet a iných. Ďalším možným vylepšením je použitie ďalších techník spracovania obrazu, napríklad použitie techník zlepšenia kvality obrazu, ako je napríklad *Super Resolution*. 
+
+
 
 ## Použité knižnice
 
