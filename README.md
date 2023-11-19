@@ -14,7 +14,18 @@ Ohodnotenia týchto datasetov sú v priečinku *data/* v súboroch *\*_labels.cs
 
 ## Popis riešenia
 
-Riešenie je rozdelené na 2 časti. Prvá časť je zameraná na predspracovanie dát. Druhá časť je zameraná na samotnú klasifikáciu.
+Riešenie je rozdelené na 3 časti. Prvá časť je zameraná na ohodnotenie dát, druhá na predspracovanie dát. Tretia časť je zameraná na samotnú klasifikáciu.
+
+### Ohodnotenie dát
+
+Ohodnotenie dát je implementované v priečinku *anotator_gui/*. Jedná sa o jednoduchú aplikáciu, ktorá umožňuje ohodnotiť snímky sietnice. Aplikácia je implementovaná pomocou knižnice *Tkinter*. Aplikácia je rozdelená na 3 časti. Aplikácia pri spustení buď načíta už existujúci csv súbor s ohodnoteniami, alebo vytvorí nový. Aplikácia následne zobrazí snímok sietnice. Po zobrazení snímku je možné snímok ohodnotiť pomocou tlačidiel *Good*, *Usable* a *Reject*. Po ohodnotení snímku sa automaticky zobrazí ďalší snímok. Po ohodnotení všetkých snímkov sa aplikácia ukončí. Tento súbor je následne možné použiť na trénovanie a testovanie modelov.
+
+Ak nemáme vopred rozdelené snímky na trénovacie a testovacie, je možné použiť script *split.py* v priečinku *preprocess/*. Tento script rozdelí snímky na trénovacie a testovacie v pomere 80:20. Tento script je možné spustiť pomocou príkazu:
+
+```python split.py --input_path ___ --train_output_path ___ --test_output_path ___ --threshold n```
+
+Kde *--input_path* je cesta k súboru s označením snímkov, *--train_output_path* je cesta k súboru, kde sa majú uložiť označenia trénovacích snímkov, *--test_output_path* je cesta k súboru, kde sa majú uložiť označenia testovacích snímkov a *--threshold* je pomer rozdelenia snímkov na trénovacie a testovacie.
+
 
 ### Predspracovanie dát
 
