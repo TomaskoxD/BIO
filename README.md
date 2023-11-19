@@ -16,6 +16,8 @@ Ohodnotenia týchto datasetov sú v priečinku *data/* v súboroch *\*_labels.cs
 
 Riešenie je rozdelené na 3 časti. Prvá časť je zameraná na ohodnotenie dát, druhá na predspracovanie dát. Tretia časť je zameraná na samotnú klasifikáciu.
 
+Dokumentácia sa nachádza v priečinku *doc/*
+
 ### Ohodnotenie dát
 
 Ohodnotenie dát je implementované v priečinku *anotator_gui/*. Jedná sa o jednoduchú aplikáciu, ktorá umožňuje ohodnotiť snímky sietnice. Aplikácia je implementovaná pomocou knižnice *Tkinter*. Aplikácia je rozdelená na 3 časti. Aplikácia pri spustení buď načíta už existujúci csv súbor s ohodnoteniami, alebo vytvorí nový. Aplikácia následne zobrazí snímok sietnice. Po zobrazení snímku je možné snímok ohodnotiť pomocou tlačidiel *Good*, *Usable* a *Reject*. Po ohodnotení snímku sa automaticky zobrazí ďalší snímok. Po ohodnotení všetkých snímkov sa aplikácia ukončí. Tento súbor je následne možné použiť na trénovanie a testovanie modelov.
