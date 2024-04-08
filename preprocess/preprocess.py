@@ -1,3 +1,14 @@
+##############################################
+#                                            #
+#    BIO                                     #
+#                                            #
+#    Preprocess retina images.               #
+#                                            #
+#    Author: Tomáš Ondrušek (xondru18)       #
+#            Peter Ďurica   (xduric05)       #
+#                                            #
+##############################################
+
 import argparse
 import glob
 import os
@@ -80,13 +91,14 @@ for r, d, f in os.walk(args.save_path):
 
 for i in range(1, len(file.namelist())):
     img = file_handler.image_open(file, i)
-    path = os.path.join('./train_preprocessed', file.namelist()[i].split('/')[-1]).replace('jpeg', 'png')
+    path = os.path.join(args.save_path, file.namelist()[i].split('/')[-1]).replace('jpeg', 'png')
     if path not in files:
         delayed_tasks.append(preprocessor.get_image_without_background(img, path))
     bar.next()
 bar.finish()
 
 print('\nExecuting ',len(delayed_tasks),'delayed tasks...\n')
+print('Saving preprocessed images to', args.save_path, '...\n')
 
 progress_bar = tqdm(total=len(delayed_tasks), desc='Progress', unit='task', bar_format='{l_bar}{bar}|')
 total = dask.delayed(delayed_tasks)

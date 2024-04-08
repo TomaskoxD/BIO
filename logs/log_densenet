@@ -1,0 +1,124 @@
+==========================================
+device:
+GPU - NVIDIA GeForce RTX 4070
+==========================================
+model:
+dense121_mcs
+==========================================
+criterion:
+BCELoss()
+==========================================
+optimizer:
+SGD (
+Parameter Group 0
+    dampening: 0
+    differentiable: False
+    foreach: None
+    lr: 0.01
+    maximize: False
+    momentum: 0
+    nesterov: False
+    weight_decay: 0
+)
+==========================================
+Total params: 28.86M
+
+
+Training mode selected
+Length of train_loader:  3136
+Length of val_loader:  3136
+Processing train Epoch -> 1 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.3288
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.4153175348967162| Best Loss: inf at epoch: 0
+Processing train Epoch -> 2 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.2988
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.35579348392119364| Best Loss: 0.4153175348967162 at epoch: 0
+Processing train Epoch -> 3 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.6105
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.3137325705076587| Best Loss: 0.35579348392119364 at epoch: 1
+Processing train Epoch -> 4 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1373
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.2951093542684174| Best Loss: 0.3137325705076587 at epoch: 2
+Processing train Epoch -> 5 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.4104
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.30290726073589935| Best Loss: 0.2951093542684174 at epoch: 3
+Processing train Epoch -> 6 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1854
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.28595569423799005| Best Loss: 0.2951093542684174 at epoch: 3
+Processing train Epoch -> 7 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1443
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.3364237849458064| Best Loss: 0.28595569423799005 at epoch: 5
+Processing train Epoch -> 8 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1726
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.2905936262389759| Best Loss: 0.28595569423799005 at epoch: 5
+Processing train Epoch -> 9 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1169
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.28063919796603637| Best Loss: 0.28595569423799005 at epoch: 5
+Processing train Epoch -> 10 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.2592
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.29693318112297173| Best Loss: 0.28063919796603637 at epoch: 8
+Processing train Epoch -> 11 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 1.0013
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.26185160570027194| Best Loss: 0.28063919796603637 at epoch: 8
+Processing train Epoch -> 12 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.4517
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.363104616667201| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 13 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.3419
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.3202559740391883| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 14 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1133
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.26877002589813226| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 15 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.2219
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.2908444326877005| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 16 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.0870
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.2786118547700593| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 17 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.3145
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.29710132255199917| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 18 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.0969
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.24337111543673945| Best Loss: 0.26185160570027194 at epoch: 10
+Processing train Epoch -> 19 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 0.1054
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.2814385092238734| Best Loss: 0.24337111543673945 at epoch: 17
+Processing train Epoch -> 20 / 20 |################################| 3136 / 3136 | Time: 0.0 mins | Loss: 1.0213
+Processing validation |################################| 3136 / 3136 | Time: 0.00 mins
+Current Loss: 0.3295144258965073| Best Loss: 0.24337111543673945 at epoch: 17
+Saving model with best loss: 0.24337111543673945 at epoch: 17
+Model saved to ./result/densenet121.tar
+
+
+Testing mode selected
+Length of test_loader:  4063
+Processing inference |################################| 4063 / 4063 | Time: 0.0 min.
+Saving results to: data/densenet121.csv
+
+
+Evaluating mode selected
+Reading test labels from: data/test_labels.csv
+Reading results from: data/densenet121.csv
+
+Values classificated by model: dense121_mcs saved in data/densenet121.csv have following metrics:
+
+Accuracy: 0.6749
+F1: 0.5758
+AUC: 0.8462
+Sensitivity: 0.5943
+Precision: 0.6371
+Specificity: 0.7973
+micro-Precision: 0.6749
+micro-Sensitivity: 0.6749
+micro-Specificity: 0.8375
+micro-F1: 0.6749
+tp: 3655.6667
+tn: 9072.0000
+fp: 1760.6667
+fn: 1760.6667
+
+________________________________________________________
+Executed in  239.94 mins    fish           external
+   usr time  298.86 mins    0.00 micros  298.86 mins
+   sys time   39.89 mins  430.00 micros   39.89 mins
